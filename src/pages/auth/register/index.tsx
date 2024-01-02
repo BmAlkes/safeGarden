@@ -2,13 +2,7 @@ import Header from "../../../components/header";
 import logo from "../../../assets/logo (2).jpg";
 import { Tabs, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { TabsList } from "@radix-ui/react-tabs";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import FormParents from "@/components/Forms/FormParents";
 import FormsTeacher from "@/components/Forms/FormsTeacher";
 
