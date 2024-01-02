@@ -227,7 +227,7 @@ const BackgroundSliderSection = () => {
       </section>
 
       <footer className="text-gray-600 body-font">
-        <div className=" px-5 py-24 mx-auto">
+        <div className="px-5 py-24 mx-auto">
           <div className="">
             <Accordion />
           </div>
@@ -253,7 +253,7 @@ const BackgroundSliderSection = () => {
               <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Send
               </button>
-              <div className=" ml-11">
+              <div className="lg:ml-11 ml-0 mt-8 lg:mt-0">
                 <img src={logo} alt="" className="h-14" />
               </div>
             </div>
