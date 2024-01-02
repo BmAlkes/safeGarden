@@ -11,87 +11,109 @@ const FormsTeacher = () => {
 
   return (
     <form onSubmit={handleSubmit(handleKindeGardenForm)}>
-      <h2>Kindergarten Tearch signup</h2>
-      <div>
-        <label>Name</label>
-        <input
-          type="text"
-          placeholder="Name"
-          {...register("name", { required: true })}
-        />
-      </div>
-      <div>
-        <label>Last Name</label>
-        <input
-          type="text"
-          placeholder="LastName"
-          {...register("lastname", { required: true })}
-        />
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          {...register("password", {
-            required: true,
-            maxLength: 15,
-            minLength: 5,
-          })}
-        />
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder="email"
-          {...register("email", { required: true })}
-        />
-      </div>
-      <div>
-        <label>The name of the residence</label>
-        <input
-          type="text"
-          placeholder="Residence"
-          {...register("Residence", { required: true })}
-        />
-      </div>
-      <div>
-        <label>Adress Residence</label>
-        <input
-          type="text"
-          placeholder="adress"
-          {...register("adress", { required: true })}
-        />
-      </div>
-      <div>
-        <label>Open Hours</label>
-        <input
-          type="time"
-          placeholder="Open Hours"
-          {...register("hours", { required: true })}
-        />
-      </div>
-      <div>
-        <label>City of the residence</label>
-        <input
-          type="Text"
-          placeholder="City of the residence"
-          {...register("citie", { required: true })}
-        />
-      </div>
-      <div className="buttonContainer">
-        <div>
-          <p>
-            By clicking Sign Up, you agree to our
-            <span className="terms" onClick={() => navigate("/Terms")}>
-              Terms, Privacy Policy and Cookies Policy.
-            </span>
-            You may receive SMS Notifications from us and can opt out any time.
-          </p>
+      <div className="flex gap-2 ">
+        <div className="flex flex-col gap-2 flex-1">
+          <label>Name</label>
+          <input
+            type="text"
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            placeholder="Name"
+            {...register("name", { required: true })}
+          />
         </div>
-        <button type="submit">Sign Up</button>
+        <div className="flex flex-col gap-2 flex-1">
+          <label>Last Name</label>
+          <input
+            type="text"
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            placeholder="LastName"
+            {...register("lastname", { required: true })}
+          />
+        </div>
       </div>
+      <div className="flex gap-2 ">
+        <div className="flex flex-col gap-2 flex-1">
+          <label>Password</label>
+          <input
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            type="password"
+            placeholder="Password"
+            {...register("password", {
+              required: true,
+              maxLength: 15,
+              minLength: 5,
+            })}
+          />
+        </div>
+        <div className="flex flex-col gap-2 flex-1">
+          <label>Email</label>
+          <input
+            type="email"
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            placeholder="email"
+            {...register("email", { required: true })}
+          />
+        </div>
+      </div>
+      <div className="flex gap-2 ">
+        <div className="flex flex-col gap-2 flex-1">
+          <label>The name of the residence</label>
+          <input
+            type="text"
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            placeholder="Residence"
+            {...register("Residence", { required: true })}
+          />
+        </div>
+        <div className="flex flex-col gap-2 flex-1">
+          <label>Adress Residence</label>
+          <input
+            type="text"
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            placeholder="adress"
+            {...register("adress", { required: true })}
+          />
+        </div>
+      </div>
+      <div className="flex gap-2 ">
+        <div className="flex flex-col gap-2 flex-1">
+          <label>Open Hours</label>
+          <input
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            type="time"
+            placeholder="Open Hours"
+            {...register("hours", { required: true })}
+          />
+        </div>
+        <div className="flex flex-col gap-2 flex-1">
+          <label>City of the residence</label>
+          <input
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            type="Text"
+            placeholder="City of the residence"
+            {...register("citie", { required: true })}
+          />
+        </div>
+      </div>
+
+      <p className=" py-5">
+        By clicking Sign Up, you agree to our
+        <br />
+        <span
+          className="cursor-pointer text-green-500 mr-1"
+          onClick={() => navigate("/Terms")}
+        >
+          Terms, Privacy Policy and Cookies Policy.
+        </span>
+        You may receive SMS Notifications from us and can opt out any time.
+      </p>
+
+      <button
+        type="submit"
+        className="w-full bg-green-500 h-9 rounded-lg  text-white font-medium text-xl hover:bg-green-600  bottom-8"
+      >
+        Register
+      </button>
     </form>
   );
 };
