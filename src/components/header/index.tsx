@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [open, setOpen] = useState(false);
   return (
-    <header className={`flex w-full items-center p-2`}>
+    <header className="flex w-full items-center p-2">
       <div className="container">
         <div className="relative mx-4 flex items-center justify-between">
           <div className="w-60 max-w-full px-4">
             <Link to="/">
               <a href="/#" className="block w-full py-5">
-                <img src={logo} alt="logo" className="hidden dark:block" />
+                <img src={logo} alt="logo" />
               </a>
             </Link>
           </div>

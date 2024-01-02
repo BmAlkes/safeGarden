@@ -46,3 +46,19 @@
   background-size: cover;
   border-radius: 63px;
 }
+
+.fullScreen {
+  height: calc(100vh - 105px);
+  background-image: url("../src/assets/img1.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.efeito-vidro {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
