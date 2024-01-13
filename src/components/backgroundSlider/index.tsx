@@ -11,6 +11,7 @@ import { MdGroups } from "react-icons/md";
 import { TfiPalette } from "react-icons/tfi";
 import { GrCertificate } from "react-icons/gr";
 import Accordion from "../questions";
+import { Link } from "react-router-dom";
 
 const BackgroundSliderSection = () => {
   const [photo, setPhoto] = useState(1);
@@ -51,7 +52,7 @@ const BackgroundSliderSection = () => {
           backgroundImage: `url(${returnPhotoURL()})`,
         }}
       >
-        <div className="flex-col lg:max-w-3xl sm:max-w-lg flex items-center ml-6 justify-center p-7 h-full sm:p-5 z-10">
+        <div className="flex-col lg:max-w-3xl sm:max-w-lg flex items-center ml-6 justify-center p-7 h-full sm:p-5 z-10 z-50">
           <h1 className=" text-2xl text-white lg:text-5xl">
             You can be calm with safegarden. Best web app for daycare
             management.
@@ -64,9 +65,12 @@ const BackgroundSliderSection = () => {
             daycare experience, ensuring a seamless and efficient journey for
             both kindergartners and parents alike.
           </p>
-          <button className=" bg-green-500 text-white p-2 rounded-md absolute bottom-16 left-12 ">
+          <Link
+            to="/login"
+            className=" bg-green-500 text-white p-2 rounded-md absolute bottom-16 left-12 cursor-pointer "
+          >
             Let The Fun Begin
-          </button>
+          </Link>
         </div>
       </section>
       <section>
