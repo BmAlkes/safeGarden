@@ -1,4 +1,4 @@
-export interface UserProps {
+export interface ParentsProps {
   firstName: string;
   lastName: string;
   phone: string;

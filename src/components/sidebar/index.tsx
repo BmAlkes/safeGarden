@@ -1,6 +1,8 @@
 import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react";
 import logo from "../../assets/logo (2).jpg";
 import { useState } from "react";
+import { TbMoodKid } from "react-icons/tb";
+import { CiCalendarDate, CiSettings } from "react-icons/ci";
 
 const Sidebar = () => {
   const [expandend, setExpandend] = useState(true);
@@ -26,15 +28,39 @@ const Sidebar = () => {
         </div>
         <ul className={`flex-1 px-3 `}>
           <li
-            className={`relative flex items-center py-2 px-3 my-1 font-medium transition-colors`}
+            className={`relative flex items-center py-2 px-3  rounded-md cursor-pointer  my-1 font-medium transition-colors hover:bg-green-500 hover:text-white`}
           >
-            icon
+            <TbMoodKid size={25} />
             <span
-              className={`overflow-hidden transition-all ${
+              className={`overflow-hidden transition-all ml-3 ${
                 expandend ? "w-52" : "w-0"
               }`}
             >
-              Text
+              My Kids
+            </span>
+          </li>
+          <li
+            className={`relative flex items-center py-2 px-3 my-1  rounded-md cursor-pointer  font-medium transition-colors  hover:bg-green-500  hover:text-white`}
+          >
+            <CiCalendarDate size={25} />
+            <span
+              className={`overflow-hidden transition-all ml-3 ${
+                expandend ? "w-52" : "w-0"
+              }`}
+            >
+              Calendar
+            </span>
+          </li>
+          <li
+            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
+          >
+            <CiSettings size={25} />
+            <span
+              className={`overflow-hidden transition-all ml-3 ${
+                expandend ? "w-52" : "w-0"
+              }`}
+            >
+              Settings
             </span>
           </li>
         </ul>
