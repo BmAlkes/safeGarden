@@ -4,6 +4,7 @@ import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import DefaultLayout from "./components/layout";
 import Dashboard from "./pages/dashboard";
+import Therms from "./pages/terms";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/Terms" element={<Therms />} />
           <Route path="/" element={<DefaultLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
