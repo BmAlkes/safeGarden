@@ -3,6 +3,8 @@ import logo from "../../assets/logo (2).jpg";
 import { useState } from "react";
 import { TbMoodKid } from "react-icons/tb";
 import { CiCalendarDate, CiSettings } from "react-icons/ci";
+import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
+import { GiPlayerBase } from "react-icons/gi";
 
 const Sidebar = () => {
   const [expandend, setExpandend] = useState(true);
@@ -26,14 +28,21 @@ const Sidebar = () => {
             {expandend ? <ChevronFirst /> : <ChevronLast />}
           </button>
         </div>
-        <ul className={`flex-1 px-3 `}>
+        <ul className={`flex-1 px-3 mt-5 `}>
+          <h2
+            className={`text-center text-xl mb-8 text-green-600  overflow-hidden transition-all ${
+              expandend ? "w-32" : "w-0"
+            }`}
+          >
+            Parents
+          </h2>
           <li
             className={`relative flex items-center py-2 px-3  rounded-md cursor-pointer  my-1 font-medium transition-colors hover:bg-green-500 hover:text-white`}
           >
             <TbMoodKid size={25} />
             <span
               className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-52" : "w-0"
+                expandend ? "w-32" : "w-0"
               }`}
             >
               My Kids
@@ -45,7 +54,51 @@ const Sidebar = () => {
             <CiCalendarDate size={25} />
             <span
               className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-52" : "w-0"
+                expandend ? "w-32" : "w-0"
+              }`}
+            >
+              Calendar
+            </span>
+          </li>
+
+          <li
+            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
+          >
+            <CiSettings size={25} />
+            <span
+              className={`overflow-hidden transition-all ml-3 ${
+                expandend ? "w-32" : "w-0"
+              }`}
+            >
+              Settings
+            </span>
+          </li>
+          <h2
+            className={`text-center text-xl mb-8 mt-8 text-green-600  overflow-hidden transition-all ${
+              expandend ? "w-32" : "w-0"
+            }`}
+          >
+            kindgarden
+          </h2>
+          <li
+            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
+          >
+            <GiPlayerBase size={25} />
+            <span
+              className={`overflow-hidden transition-all ml-3 ${
+                expandend ? "w-32" : "w-0"
+              }`}
+            >
+              My Kindergarten
+            </span>
+          </li>
+          <li
+            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
+          >
+            <CiCalendarDate size={25} />
+            <span
+              className={`overflow-hidden transition-all ml-3 ${
+                expandend ? "w-32" : "w-0"
               }`}
             >
               Calendar
@@ -54,10 +107,22 @@ const Sidebar = () => {
           <li
             className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
           >
+            <MdOutlinePhotoSizeSelectActual size={25} />
+            <span
+              className={`overflow-hidden transition-all ml-3 ${
+                expandend ? "w-32" : "w-0"
+              }`}
+            >
+              Daily Photos
+            </span>
+          </li>
+          <li
+            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
+          >
             <CiSettings size={25} />
             <span
               className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-52" : "w-0"
+                expandend ? "w-32" : "w-0"
               }`}
             >
               Settings
@@ -72,7 +137,7 @@ const Sidebar = () => {
           />
           <div
             className={`flex justify-between items-center  overflow-hidden transition-all ${
-              expandend ? "w-52 ml-3" : "w-0"
+              expandend ? "w-32 ml-3" : "w-0"
             } `}
           >
             <div className="leading-4">
