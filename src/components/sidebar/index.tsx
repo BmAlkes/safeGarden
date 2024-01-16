@@ -5,6 +5,7 @@ import { TbMoodKid } from "react-icons/tb";
 import { CiCalendarDate, CiSettings } from "react-icons/ci";
 import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 import { GiPlayerBase } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [expandend, setExpandend] = useState(true);
@@ -36,30 +37,34 @@ const Sidebar = () => {
           >
             Parents
           </h2>
-          <li
-            className={`relative flex items-center py-2 px-3  rounded-md cursor-pointer  my-1 font-medium transition-colors hover:bg-green-500 hover:text-white`}
-          >
-            <TbMoodKid size={25} />
-            <span
-              className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-32" : "w-0"
-              }`}
+          <Link to="/mykids">
+            <li
+              className={`relative flex items-center py-2 px-3  rounded-md cursor-pointer  my-1 font-medium transition-colors hover:bg-green-500 hover:text-white`}
             >
-              My Kids
-            </span>
-          </li>
-          <li
-            className={`relative flex items-center py-2 px-3 my-1  rounded-md cursor-pointer  font-medium transition-colors  hover:bg-green-500  hover:text-white`}
-          >
-            <CiCalendarDate size={25} />
-            <span
-              className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-32" : "w-0"
-              }`}
+              <TbMoodKid size={25} />
+              <span
+                className={`overflow-hidden transition-all ml-3 ${
+                  expandend ? "w-32" : "w-0"
+                }`}
+              >
+                My Kids
+              </span>
+            </li>
+          </Link>
+          <Link to="/calendar">
+            <li
+              className={`relative flex items-center py-2 px-3 my-1  rounded-md cursor-pointer  font-medium transition-colors  hover:bg-green-500  hover:text-white`}
             >
-              Calendar
-            </span>
-          </li>
+              <CiCalendarDate size={25} />
+              <span
+                className={`overflow-hidden transition-all ml-3 ${
+                  expandend ? "w-32" : "w-0"
+                }`}
+              >
+                Calendar
+              </span>
+            </li>
+          </Link>
 
           <li
             className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}

@@ -1,0 +1,65 @@
+import { Link } from "react-router-dom";
+
+const MyKids = () => {
+  return (
+    <div className="container">
+      <h2 className="text-green-500 my-9 text-5xl font-thin text-center">
+        My kids
+      </h2>
+
+      <Link to={`/mykids/id`}>
+        <div className="rounded-lg flex md:flex-row-reverse flex-col bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <div className="p-6">
+            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              Amily
+            </h5>
+            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Exercitationem fugiat est, neque assumenda molestiae repudiandae
+              dolor a rerum voluptatibus nesciunt perspiciatis omnis eligendi,
+              consequuntur soluta minima iusto magni quae esse!
+            </p>
+            <p className="text-base text-neutral-600 dark:text-neutral-200"></p>
+          </div>
+          <div className="relative overflow-hidden bg-cover bg-no-repeat">
+            <img
+              className="rounded-3xl "
+              src="https://www.campaignforkids.com/wp-content/uploads/2015/03/freekid-1024x768.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+      </Link>
+      <div className="flex flex-col md:flex-row items-center justify-between mt-11 gap-5">
+        <button className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600">
+          Report Attendance
+        </button>
+        <button className="bg-red-500 text-white font-thin h-10  p-6 flex items-center rounded-lg hover:bg-red-600">
+          Not comming Today
+        </button>
+      </div>
+      <div className="flex gap-6 mt-6">
+        <div className="flex items-center gap-3">
+          <label htmlFor="sick">Sick</label>
+          <input
+            type="checkbox"
+            id="sick"
+            name="sick"
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          />
+        </div>
+        <div className="flex items-center gap-3">
+          <label htmlFor="vacation">Vacation</label>
+          <input
+            type="checkbox"
+            id="vacation"
+            name="vacation"
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MyKids;

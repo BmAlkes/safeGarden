@@ -5,6 +5,9 @@ import Register from "./pages/auth/register";
 import DefaultLayout from "./components/layout";
 import Dashboard from "./pages/dashboard";
 import Therms from "./pages/terms";
+import MyKids from "./pages/mykids";
+import MyKidsDetail from "./pages/mykids/mykidsdetail";
+import Calendar from "./pages/calendar";
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
           <Route path="/Terms" element={<Therms />} />
           <Route path="/" element={<DefaultLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/mykids" element={<MyKids />} />
+            <Route path="/mykids/:id" element={<MyKidsDetail />} />
+            <Route path="/calendar" element={<Calendar />} />
           </Route>
         </Routes>
       </BrowserRouter>
