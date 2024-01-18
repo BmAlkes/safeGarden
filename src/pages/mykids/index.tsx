@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const MyKids = () => {
-  const [kids, setKids] = useState(true);
+  const [kids] = useState(true);
   return (
     <div className="container">
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
@@ -10,9 +10,11 @@ const MyKids = () => {
       </nav>
 
       <div className="w-full flex items-center justify-end mb-16">
-        <button className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600">
-          Register new children
-        </button>
+        <Link to="/registerKid">
+          <button className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600">
+            Register new children
+          </button>
+        </Link>
       </div>
       {kids ? (
         <>
@@ -49,7 +51,7 @@ const MyKids = () => {
                 Not comming Today
               </button>
             </div>
-            <div className="flex gap-6 mt-6">
+            <div className="flex justify-end gap-6 mt-6">
               <div className="flex items-center gap-3">
                 <label htmlFor="sick">Sick</label>
                 <input

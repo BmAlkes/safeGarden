@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const KinderGarten = () => {
   return (
-    <section className="container">
+    <section className=" md:container ">
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
         <h1 className="font-normal text-4xl text-green-500">Kindergarten</h1>
       </nav>
@@ -21,7 +21,7 @@ const KinderGarten = () => {
           <tr className="tr">
             <Link to="/kidsdetail/:id">
               <td className="tdLabel" data-label="picture">
-                <Avatar className="w-24 h-24">
+                <Avatar className="md:w-24 md:h-24  w-16 h-16">
                   <AvatarImage
                     src={
                       "https://edytg45wchr.exactdn.com/wp-content/uploads/2021/10/baby-toddler-kids-sunglasses-beachcomber-bicycle-ride_1.jpg?strip=all&lossy=1&ssl=1"
@@ -45,7 +45,7 @@ const KinderGarten = () => {
           <tr className="tr">
             <Link to="/kidsdetail/:id">
               <td className="tdLabel" data-label="picture">
-                <Avatar className="w-24 h-24">
+                <Avatar className="md:w-24 md:h-24  w-16 h-16">
                   <AvatarImage
                     src={
                       "https://image.cnbcfm.com/api/v1/image/106900786-1624370326753-childhood-book-at-home-little-girl-toddler-girl-happy-girl-reading-book-kids-playtime-girl-curly-hair_t20_4dyJOa.jpg?v=1624370380&w=720&h=405"
@@ -69,7 +69,7 @@ const KinderGarten = () => {
           <tr className="tr">
             <Link to="/kidsdetail/:id">
               <td className="tdLabel" data-label="picture">
-                <Avatar className="w-24 h-24">
+                <Avatar className="md:w-24 md:h-24  w-16 h-16">
                   <AvatarImage
                     src={
                       "https://campaignforkids.com/wp-content/uploads/2015/03/freekid-1024x768.jpg"

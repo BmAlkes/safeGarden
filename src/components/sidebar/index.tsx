@@ -11,7 +11,7 @@ import { IoFastFoodOutline } from "react-icons/io5";
 const Sidebar = () => {
   const [expandend, setExpandend] = useState(true);
   return (
-    <aside className="h-screen ">
+    <aside className="h-screen">
       <nav className="w-full h-full flex flex-col bg-white border-r shadow-lg">
         <div className="p-4 pb-2 flex justify-between items-center">
           <Link to="/dashboard">
@@ -116,18 +116,20 @@ const Sidebar = () => {
               </span>
             </li>
           </Link>
-          <li
-            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
-          >
-            <MdOutlinePhotoSizeSelectActual size={25} />
-            <span
-              className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-32" : "w-0"
-              }`}
+          <Link to="/dailyPhoto">
+            <li
+              className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
             >
-              Daily Photos
-            </span>
-          </li>
+              <MdOutlinePhotoSizeSelectActual size={25} />
+              <span
+                className={`overflow-hidden transition-all ml-3 ${
+                  expandend ? "w-32" : "w-0"
+                }`}
+              >
+                Daily Photos
+              </span>
+            </li>
+          </Link>
           <Link to="/menu">
             <li
               className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}

@@ -18,7 +18,7 @@ interface Event {
 }
 
 const Calendar = () => {
-  const [events, setEvents] = useState([
+  const [events] = useState([
     { title: "Holidays", id: "1" },
     { title: "Closed", id: "2" },
   ]);
