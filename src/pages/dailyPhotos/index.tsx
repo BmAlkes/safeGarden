@@ -1,5 +1,3 @@
-import React from "react";
-
 const DailyPhotos = () => {
   return (
     <section className=" md:container ">
