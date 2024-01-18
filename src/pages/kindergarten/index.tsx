@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import img from "../../assets/img1.jpg";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const KinderGarten = () => {
@@ -8,6 +7,7 @@ const KinderGarten = () => {
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
         <h1 className="font-normal text-4xl text-green-500">Kindergarten</h1>
       </nav>
+
       <table className="shadow-2xl">
         <thead className="bg-green-600">
           <tr>
@@ -48,7 +48,7 @@ const KinderGarten = () => {
                 <Avatar className="w-24 h-24">
                   <AvatarImage
                     src={
-                      "https://edytg45wchr.exactdn.com/wp-content/uploads/2021/10/baby-toddler-kids-sunglasses-beachcomber-bicycle-ride_1.jpg?strip=all&lossy=1&ssl=1"
+                      "https://image.cnbcfm.com/api/v1/image/106900786-1624370326753-childhood-book-at-home-little-girl-toddler-girl-happy-girl-reading-book-kids-playtime-girl-curly-hair_t20_4dyJOa.jpg?v=1624370380&w=720&h=405"
                     }
                     className="object-cover "
                   />
@@ -57,7 +57,7 @@ const KinderGarten = () => {
               </td>
             </Link>
             <td className="tdLabel" data-label="Name">
-              Leo
+              Moshe
             </td>
             <td className="tdLabel" data-label="Come">
               came at: 08:08:25, 17/01/25
