@@ -6,6 +6,7 @@ import { CiCalendarDate, CiSettings } from "react-icons/ci";
 import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 import { GiPlayerBase } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { IoFastFoodOutline } from "react-icons/io5";
 
 const Sidebar = () => {
   const [expandend, setExpandend] = useState(true);
@@ -13,13 +14,15 @@ const Sidebar = () => {
     <aside className="h-screen ">
       <nav className="w-full h-full flex flex-col bg-white border-r shadow-lg">
         <div className="p-4 pb-2 flex justify-between items-center">
-          <img
-            src={logo}
-            alt=""
-            className={`overflow-hidden transition-all ${
-              expandend ? "w-32" : "w-0"
-            }`}
-          />
+          <Link to="/dashboard">
+            <img
+              src={logo}
+              alt=""
+              className={`overflow-hidden transition-all ${
+                expandend ? "w-32" : "w-0"
+              }`}
+            />
+          </Link>
           <button
             className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-200 "
             onClick={() => {
@@ -85,30 +88,34 @@ const Sidebar = () => {
           >
             kindgarden
           </h2>
-          <li
-            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
-          >
-            <GiPlayerBase size={25} />
-            <span
-              className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-32" : "w-0"
-              }`}
+          <Link to="/kindergarten">
+            <li
+              className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
             >
-              My Kindergarten
-            </span>
-          </li>
-          <li
-            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
-          >
-            <CiCalendarDate size={25} />
-            <span
-              className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-32" : "w-0"
-              }`}
+              <GiPlayerBase size={25} />
+              <span
+                className={`overflow-hidden transition-all ml-3 ${
+                  expandend ? "w-32" : "w-0"
+                }`}
+              >
+                My Kindergarten
+              </span>
+            </li>
+          </Link>
+          <Link to="/calendar">
+            <li
+              className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
             >
-              Calendar
-            </span>
-          </li>
+              <CiCalendarDate size={25} />
+              <span
+                className={`overflow-hidden transition-all ml-3 ${
+                  expandend ? "w-32" : "w-0"
+                }`}
+              >
+                Calendar
+              </span>
+            </li>
+          </Link>
           <li
             className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
           >
@@ -121,6 +128,20 @@ const Sidebar = () => {
               Daily Photos
             </span>
           </li>
+          <Link to="/menu">
+            <li
+              className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
+            >
+              <IoFastFoodOutline size={25} />
+              <span
+                className={`overflow-hidden transition-all ml-3 ${
+                  expandend ? "w-32" : "w-0"
+                }`}
+              >
+                Menu
+              </span>
+            </li>
+          </Link>
           <li
             className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
           >

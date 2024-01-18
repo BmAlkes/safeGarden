@@ -8,6 +8,7 @@ import Therms from "./pages/terms";
 import MyKids from "./pages/mykids";
 import MyKidsDetail from "./pages/mykids/mykidsdetail";
 import Calendar from "./pages/calendar";
+import KinderGarten from "./pages/kindergarten";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/mykids" element={<MyKids />} />
             <Route path="/mykids/:id" element={<MyKidsDetail />} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/kindergarten" element={<KinderGarten />} />
           </Route>
         </Routes>
       </BrowserRouter>

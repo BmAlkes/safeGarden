@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 const MyKids = () => {
   return (
     <div className="container">
-      <h2 className="text-green-500 my-9 text-5xl font-thin text-center">
-        My kids
-      </h2>
+      <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
+        <h1 className="font-normal text-4xl text-green-500">My Kids</h1>
+      </nav>
 
       <Link to={`/mykids/id`}>
         <div className="rounded-lg flex md:flex-row-reverse flex-col bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">

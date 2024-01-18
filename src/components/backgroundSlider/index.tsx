@@ -58,12 +58,14 @@ const BackgroundSliderSection = () => {
             management.
           </h1>
           <p className="text-white mt-5 text-sm lg:text-lg py-4">
-            Welcome to our state-of-the-art daycare management website, crafted
-            with meticulous planning and a vision to streamline and enhance
-            daycare management.
-            <br /> Our platform is designed to optimize every aspect of your
-            daycare experience, ensuring a seamless and efficient journey for
-            both kindergartners and parents alike.
+            Welcome to safe garden Our site was built for kindergartens in order
+            to give a sense of peace and security for your children.
+            <br />
+            The main part of the site was built with the vision that every
+            parent who leaves their child in the kindergarten will be sure that
+            the child is there during the whole day by a simple digital
+            confirmation from the kindergarten teacher confirming that the child
+            is indeed in the kindergarten
           </p>
           <Link
             to="/login"
@@ -122,9 +124,8 @@ const BackgroundSliderSection = () => {
       <section className="container mr-auto ml-auto flex flex-col justify-center items-center w-full my-11 ">
         <h2 className="text-4xl my-12 text-slate-800">What We Offer</h2>
         <p className="max-w-[800px] text-center py-5 mb-10 font-light">
-          At our education center, we provide a variety of benefits and
-          advantages for your kids successful education, while allowing your kid
-          to stay fully active, creative, and healthy.
+          On our website we provide measures to ensure the safety of children
+          and some other interesting benefits that you can use.
         </p>
         <div className="container flex flex-col items-center justify-center">
           <div className="flex gap-5 lg:flex-row flex-col">
@@ -132,30 +133,31 @@ const BackgroundSliderSection = () => {
               <div className="greenball">
                 <IoShieldOutline size={50} color="#6ec599" />
               </div>
-              <h3 className="font-semibold text-center mt-3">Safety First</h3>
+              <h3 className="font-semibold text-center mt-3">Privacy</h3>
               <p className="text-center py-4 font-thin text-slate-600">
-                We offer first-className protection and security for your
-                children at Kinderex.
+                All your personal details are kept only for your user and
+                protected.
               </p>
             </div>
             <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
               <div className="greenball">
                 <MdGroups size={50} color="#6ec599" />
               </div>
-              <h3 className="font-semibold text-center mt-3">Safety First</h3>
+              <h3 className="font-semibold text-center mt-3">Presence</h3>
               <p className="text-center py-4 font-thin text-slate-600">
-                We offer first-className protection and security for your
-                children at Kinderex.
+                Each parent of the child's arrival kindergarten and the
+                kindergarten teacher confirms that the child is indeed in
+                kindergarten.
               </p>
             </div>
             <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
               <div className="greenball">
                 <GrCertificate size={50} color="#6ec599" />
               </div>
-              <h3 className="font-semibold text-center mt-3">Safety First</h3>
+              <h3 className="font-semibold text-center mt-3">Calendar</h3>
               <p className="text-center py-4 font-thin text-slate-600">
-                We offer first-className protection and security for your
-                children at Kinderex.
+                The kindergarten teacher informs the parents of important dates
+                related to the children such as: holidays and vacations.
               </p>
             </div>
           </div>
@@ -165,30 +167,31 @@ const BackgroundSliderSection = () => {
                 <MdOutlineChildCare size={50} color="#6ec599" />
               </div>
 
-              <h3 className="font-semibold text-center mt-3">Safety First</h3>
+              <h3 className="font-semibold text-center mt-3"> Story</h3>
               <p className="text-center py-4 font-thin text-slate-600">
-                We offer first-className protection and security for your
-                children at Kinderex.
+                The kindergarten teacher uploads pictures for 24 hours of the
+                children
               </p>
             </div>
             <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
               <div className="greenball">
                 <TfiPalette size={50} color="#6ec599" />
               </div>
-              <h3 className="font-semibold text-center mt-3">Safety First</h3>
+              <h3 className="font-semibold text-center mt-3">Comfort</h3>
               <p className="text-center py-4 font-thin text-slate-600">
-                We offer first-className protection and security for your
-                children at Kinderex.
+                Parents who have several children will be able to enjoy easy
+                access in the same browser for all children even if they are in
+                different kindergartens.
               </p>
             </div>
             <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
               <div className="greenball">
                 <IoSunnyOutline size={50} color="#6ec599" />
               </div>
-              <h3 className="font-semibold text-center mt-3">Safety First</h3>
+              <h3 className="font-semibold text-center mt-3">Attachment</h3>
               <p className="text-center py-4 font-thin text-slate-600">
-                We offer first-className protection and security for your
-                children at Kinderex.
+                Each parent has all the detail s for contacting the kindergarten
+                n workers as well as the kindergarten workers
               </p>
             </div>
           </div>
@@ -202,12 +205,26 @@ const BackgroundSliderSection = () => {
               A Few Words About Us
             </h1>
             <p className="leading-relaxed text-base text-center lg:text-right">
-              At Kinderex, our mission is to provide excellence in preschool,
-              kindergarten, before and after school programs and summer camp for
-              families living in the greater local area. Here you ll find
-              exceptional teachers, curriculum and learning environments that
-              encourage children to learn, play, and explore in a safe, healthy,
-              and nurturing environment promoting creative thinking.
+              Hello, we are Katy and Anastasia, nice to meet you! After several
+              cases of parents who put their child in kindergarten and went to
+              work and thought that their treasure was safe and in fact the
+              child actually left the kindergarten for the reasons of: other
+              parents entered and left, a parent who forgot to close the gate or
+              due to inattention of the kindergarten teacher and other reasons,
+              determination built Safe Garden. We are two mothers who put their
+              most precious treasure in kindergartens, after several unfortunate
+              incidents that happened in the world over the years we were
+              worried about the safety of our children, After all, how can we be
+              sure that when a large number of people enter the kindergarten
+              together that a child will not disappear among the crowd? From
+              here came the main idea to establish a website for reporting
+              attendance in kindergartens, the parents report attendance by 8:15
+              and the kindergarten teacher must confirm the attendance rule that
+              the parents entered by 8:30! In the event of a discrepancy between
+              the presence of the parent and the kindergartener, an alert
+              appears for the kindergartener and the parents automatically In
+              this way, we shorten the time in case a child goes missing and is
+              exposed to dangers outside.
             </p>
           </div>
           <div className="flex flex-col md:w-1/2 md:pl-12">
@@ -220,11 +237,11 @@ const BackgroundSliderSection = () => {
         <div className="container px-5 py-14 mx-auto">
           <div className="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
             <h1 className="flex-grow sm:pr-16 text-2xl font-medium title-font">
-              Slow-carb next level shoindxgoitch ethical authentic, scenester
-              sriracha forage.
+              We built the site with a vision to give parents and children a
+              little more security in kindergarten
             </h1>
             <button className="flex-shrink-0 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg mt-10 sm:mt-0">
-              Button
+              SignUp Now
             </button>
           </div>
         </div>

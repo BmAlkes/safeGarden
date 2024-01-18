@@ -14,8 +14,7 @@ const Accordion = () => {
                 Any Questions? Look Here
               </h2>
               <p className="text-base text-body-color dark:text-dark-6">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                We have narrowed down the most common questions here
               </p>
             </div>
           </div>
@@ -24,30 +23,42 @@ const Accordion = () => {
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4 lg:w-1/2">
             <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              header="How do you fill attendance?"
+              text="Enter My children and click on
+              Report Attendance then choose
+              the right option for your child"
             />
             <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              header="Do parents have access to
+              change a calendar event?
+             "
+              text="No, access is conditional only
+              to the head kindergartener."
             />
             <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              header="Are our personal details protected?"
+              text="Of course, we have high data security 
+              on the site."
             />
           </div>
           <div className="w-full px-4 lg:w-1/2">
             <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              header="Allergies?              "
+              text="Each parent has the option to mark allergies
+              and choose the type of allergy of the child
+              that will appear with all the kindergarten staff.."
             />
             <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              header="How do you update details for a child?"
+              text="Only the kindergartener has access to
+              change the details after the parents' first input. ."
             />
             <AccordionItem
-              header="How long we deliver your first blog post?"
-              text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              header="Is it possible to save pictures that
+              the gardener has uploaded?"
+              text="Yes, it should be noted that the photos
+              are only available for up to 24 hours from
+              the moment of uploading to Story.."
             />
           </div>
         </div>
