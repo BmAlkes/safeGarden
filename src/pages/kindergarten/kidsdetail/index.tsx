@@ -9,30 +9,38 @@ const KidsDetail = () => {
             Amily
           </h4>
           <div className="flex flex-col md:flex-row gap-5">
-            <h5 className="font-bold">My kindergarten:</h5>
+            <h5 className="font-bold">Main parent:</h5>
             <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              BabyLend
+              Naama Zafrir
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-5">
-            <h5 className="font-bold">My Teacher:</h5>
-            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              Neta Cohen
-            </p>
-          </div>
-          <div className="flex flex-col md:flex-row gap-5">
-            <h5 className="font-bold">Teache's Phone:</h5>
-            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              054-6144917
-            </p>
+            <h5 className="font-bold">Phone number:</h5>
+            <a
+              href={`tel:+972054758499`}
+              className="mb-4 text-base text-neutral-600 dark:text-neutral-200"
+            >
+              054-7585999
+            </a>
           </div>
           <div className="flex flex-col md:flex-row gap-5">
             <h5 className="font-bold">Adress:</h5>
             <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              Ashekelon, Eli Cohen 38
+              : Ashkelon, Ben gurion 4\10
             </p>
           </div>
-          <p className="text-base text-neutral-600 dark:text-neutral-200"></p>
+          <div className="flex flex-col md:flex-row gap-5">
+            <h5 className="font-bold">HMO:</h5>
+            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+              Clalit
+            </p>
+          </div>
+          <div className="flex flex-col md:flex-row gap-5">
+            <h5 className="font-bold">Allergies:</h5>
+            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+              Peanuts
+            </p>
+          </div>
         </div>
         <div className="relative overflow-hidden bg-cover bg-no-repeat lg:w-80">
           <img

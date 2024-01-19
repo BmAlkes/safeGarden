@@ -1,3 +1,18 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import photo1 from "../../assets/1.jpeg";
+import photo2 from "../../assets/2.jpeg";
+import photo3 from "../../assets/3.jpeg";
+import photo4 from "../../assets/4.jpeg";
+import photo5 from "../../assets/5.jpeg";
+import photo6 from "../../assets/6.jpeg";
+
 const DailyPhotos = () => {
   return (
     <section className=" md:container ">
@@ -13,34 +28,38 @@ const DailyPhotos = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="grid gap-4">
           <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://campaignforkids.com/wp-content/uploads/2015/03/freekid-1024x768.jpg"
-              alt=""
-            />
+            <Dialog>
+              <DialogTrigger asChild>
+                <img
+                  className="h-auto max-w-full rounded-lg"
+                  src={photo1}
+                  alt=""
+                />
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] lg:max-w-[700px]">
+                <DialogHeader>
+                  <DialogDescription className="mx-auto">
+                    <img
+                      className="h-auto max-w-full rounded-lg"
+                      src={photo1}
+                      alt=""
+                    />
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4"></div>
+              </DialogContent>
+            </Dialog>
           </div>
           <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://images.gmanews.tv/webpics/2019/12/1_2019_12_14_11_26_53.jpg"
-              alt=""
-            />
+            <img className="h-auto max-w-full rounded-lg" src={photo2} alt="" />
           </div>
           <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://i2-prod.derbytelegraph.co.uk/incoming/article5248213.ece/ALTERNATES/s810/0_GettyImages-1172643701.jpg"
-              alt=""
-            />
+            <img className="h-auto max-w-full rounded-lg" src={photo3} alt="" />
           </div>
         </div>
         <div className="grid gap-4">
           <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://w0.peakpx.com/wallpaper/417/910/HD-wallpaper-cute-kid-girl-toddler-cute-children-kid.jpg"
-              alt=""
-            />
+            <img className="h-auto max-w-full rounded-lg" src={photo4} alt="" />
           </div>
           <div>
             <img
@@ -50,20 +69,12 @@ const DailyPhotos = () => {
             />
           </div>
           <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://w0.peakpx.com/wallpaper/391/587/HD-wallpaper-little-cute-girl-little-girl-cute.jpg"
-              alt=""
-            />
+            <img className="h-auto max-w-full rounded-lg" src={photo5} alt="" />
           </div>
         </div>
         <div className="grid gap-4">
           <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://img.freepik.com/fotos-gratis/aproxime-se-criancas-brincando-com-corda_23-2149073600.jpg?w=826&t=st=1705583350~exp=1705583950~hmac=bd49372871f1f2b238f1b2d21162ea294a18d183b263142e7586476a88b26dd2"
-              alt=""
-            />
+            <img className="h-auto max-w-full rounded-lg" src={photo6} alt="" />
           </div>
           <div>
             <img
