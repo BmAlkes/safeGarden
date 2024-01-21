@@ -255,25 +255,32 @@ const BackgroundSliderSection = () => {
         </div>
         <div className="border-t border-gray-200">
           <div className="container px-5 py-8 flex flex-wrap mx-auto items-center">
-            <div className="flex md:flex-nowrap flex-wrap justify-center items-end md:justify-start">
+            <div className="flex md:flex-nowrap flex-wrap justify-center items-center md:justify-start">
               <div className="relative sm:w-64 w-40 sm:mr-4 mr-2">
-                <label
-                  htmlFor="footer-field"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  Contact Us
-                </label>
-                <input
-                  type="text"
-                  id="footer-field"
-                  placeholder="send a message to us"
-                  name="footer-field"
-                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
+                <form>
+                  <label
+                    htmlFor="footer-field"
+                    className="leading-7 text-sm text-gray-600"
+                  >
+                    Contact Us
+                  </label>
+                  <input
+                    type="email"
+                    id="footer-field"
+                    placeholder="email@email.com"
+                    name="footer-field"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  <label htmlFor="msg">Msg</label>
+                  <textarea
+                    id="msg"
+                    className="resize-none w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  ></textarea>
+                  <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                    Send
+                  </button>
+                </form>
               </div>
-              <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                Send
-              </button>
               <div className="lg:ml-11 ml-0 mt-8 lg:mt-0">
                 <img src={logo} alt="" className="h-14" />
               </div>

@@ -30,7 +30,7 @@ const RegisterKid = () => {
       <div className="flex justify-between mb-12 border-b border-violet-100 p-4">
         <h1 className="font-normal text-4xl text-green-500">Register Kids</h1>
       </div>
-      <div className="efeito-vidro">
+      <div className="efeito-vidro md:max-w-auto">
         <h3 className="font-normal text-2xl text-center my-3 text-green-500">
           Register new kid
         </h3>
