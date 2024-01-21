@@ -2,7 +2,14 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ChangeEvent, useState } from "react";
+import { FiTrash, FiUpload } from "react-icons/fi";
 
+interface ImageItemProps {
+  uid: number;
+  name: string;
+  previewUrl: string;
+}
 const schemaForm = z.object({
   name: z.string(),
   lastname: z.string(),
@@ -13,6 +20,7 @@ const schemaForm = z.object({
   bloodtype: z.string(),
 });
 const RegisterKid = () => {
+  const [kidsImage, setKidsImages] = useState<ImageItemProps[]>([]);
   const {
     register,
     handleSubmit,
@@ -24,6 +32,29 @@ const RegisterKid = () => {
   const handleFormSubmit = (data: any) => {
     console.log(data);
   };
+  const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const image = e.target.files[0];
+
+      if (image.type === "image/jpeg" || image.type === "image/png") {
+        handleUpload(image);
+      } else {
+        alert("Send a image file png or Jpeg");
+        return;
+      }
+    }
+  };
+
+  async function handleUpload(image: File) {
+    console.log(image);
+    const imageItem = {
+      name: image.name,
+      uid: image.lastModified,
+      previewUrl: URL.createObjectURL(image),
+    };
+    setKidsImages((prev) => [...prev, imageItem]);
+  }
+
   console.log(errors);
   return (
     <section className="container p-2 md:p-8">
@@ -123,7 +154,38 @@ const RegisterKid = () => {
             <label htmlFor="picture" className="font-light text-xl">
               Picture
             </label>
-            <input type="file" />
+
+            <button className="border-2 w-48 rounded-lg flex items-center justify-center cursor-pointer border-gray-600 h-32">
+              <div className="absolute cursor-pointer">
+                <FiUpload size={30} color="#000" />
+              </div>
+              <div className="cursor-pointer">
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="opacity-0 cursor-pointer"
+                  onChange={handleFile}
+                />
+              </div>
+            </button>
+
+            <div className="w-full h-32 items-center flex justify-center relative">
+              {kidsImage.map((item) => (
+                <>
+                  <button
+                    key={item.name}
+                    className="absolute"
+                    // onClick={() => handleDeleteImage(item)}
+                  >
+                    <FiTrash size={28} color="#fff" />
+                  </button>
+                  <img
+                    src={item.previewUrl}
+                    className="rounded-lg w-full h-32 object-cover"
+                  />
+                </>
+              ))}
+            </div>
           </div>
           <button
             type="submit"

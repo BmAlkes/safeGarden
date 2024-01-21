@@ -11,6 +11,7 @@ import photo3 from "../../assets/3.jpeg";
 import photo4 from "../../assets/4.jpeg";
 import photo5 from "../../assets/5.jpeg";
 import photo6 from "../../assets/6.jpeg";
+import Upload from "@/components/uploadphoto";
 
 const DailyPhotos = () => {
   return (
@@ -19,9 +20,20 @@ const DailyPhotos = () => {
         <h1 className="font-normal text-4xl text-green-500">Daily Photo</h1>
       </nav>
       <div className="w-full flex justify-end mb-12">
-        <button className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600">
-          upload photo
-        </button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <button className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600">
+              upload photo
+            </button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogDescription>
+                <Upload />
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -45,7 +57,6 @@ const DailyPhotos = () => {
                     />
                   </DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4"></div>
               </DialogContent>
             </Dialog>
           </div>
