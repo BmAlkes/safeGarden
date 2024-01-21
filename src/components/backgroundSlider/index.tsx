@@ -269,11 +269,17 @@ const BackgroundSliderSection = () => {
                     id="footer-field"
                     placeholder="email@email.com"
                     name="footer-field"
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-100 bg-opacity-50 mb-4 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
-                  <label htmlFor="msg">Msg</label>
+                  <label
+                    htmlFor="msg"
+                    className="leading-7 text-sm text-gray-600 "
+                  >
+                    Message
+                  </label>
                   <textarea
                     id="msg"
+                    placeholder="type us a message"
                     className="resize-none w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   ></textarea>
                   <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
