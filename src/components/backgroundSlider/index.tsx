@@ -12,9 +12,14 @@ import { TfiPalette } from "react-icons/tfi";
 import { GrCertificate } from "react-icons/gr";
 import Accordion from "../questions";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
 
 const BackgroundSliderSection = () => {
   const [photo, setPhoto] = useState(1);
+
   useEffect(() => {
     const interval = setInterval(() => {
       change();
@@ -32,6 +37,7 @@ const BackgroundSliderSection = () => {
     }
     setPhoto((prev) => prev + 1);
   };
+
   const returnPhotoURL = () => {
     switch (photo) {
       case 1:
@@ -52,7 +58,7 @@ const BackgroundSliderSection = () => {
           backgroundImage: `url(${returnPhotoURL()})`,
         }}
       >
-        <div className="flex-col lg:max-w-3xl sm:max-w-lg flex items-center ml-6 justify-center p-7 h-full sm:p-5 z-10 z-50">
+        <div className="flex-col lg:max-w-3xl sm:max-w-lg flex items-center ml-6 justify-center p-7 h-full sm:p-5 z-50">
           <h1 className=" text-2xl text-white lg:text-5xl">
             You can be calm with safegarden. Best web app for daycare
             management.
@@ -77,7 +83,11 @@ const BackgroundSliderSection = () => {
       </section>
       <section>
         <div className="flex w-full lg:flex-row  flex-col">
-          <div className="flex-1 bg-[#60cd96] p-5">
+          <div
+            className="flex-1 bg-[#60cd96] p-5"
+            data-aos="fade-down"
+            data-aos-duration="1000"
+          >
             <IoBookSharp size={60} color="#FFF" />
             <h2 className="font-semibold text-white text-lg py-2">
               Managing all the children in the daycare in one place
@@ -87,7 +97,11 @@ const BackgroundSliderSection = () => {
               information including the child's medical card.
             </p>
           </div>
-          <div className="flex-1 bg-[#69d2e7] p-5">
+          <div
+            className="flex-1 bg-[#69d2e7] p-5"
+            data-aos="fade-down"
+            data-aos-duration="2000"
+          >
             <IoSunnyOutline size={60} color="#FFF" />
             <h2 className="font-semibold text-white text-lg py-2">
               Attendance reporting
@@ -98,7 +112,11 @@ const BackgroundSliderSection = () => {
               the day.
             </p>
           </div>
-          <div className="flex-1 bg-[#fa8f6f] p-3">
+          <div
+            className="flex-1 bg-[#fa8f6f] p-3"
+            data-aos="fade-down"
+            data-aos-duration="3000"
+          >
             <AiOutlineSafetyCertificate size={60} color="#FFF" />
             <h2 className="font-semibold text-white text-lg py-2">
               Managing an event diary
@@ -108,7 +126,11 @@ const BackgroundSliderSection = () => {
               kindergarten.
             </p>
           </div>
-          <div className="flex-1 bg-[#9c87c2] p-3">
+          <div
+            className="flex-1 bg-[#9c87c2] p-3"
+            data-aos="fade-down"
+            data-aos-duration="3000"
+          >
             <MdOutlineSecurity size={60} color="#FFF" />
             <h2 className="font-semibold text-white text-lg py-2">
               Security Information
@@ -121,7 +143,7 @@ const BackgroundSliderSection = () => {
           </div>
         </div>
       </section>
-      <section className="container mr-auto ml-auto flex flex-col justify-center items-center w-full my-11 ">
+      <section className="container  mr-auto ml-auto flex flex-col justify-center items-center w-full my-11 ">
         <h2 className="text-4xl my-12 text-slate-800">What We Offer</h2>
         <p className="max-w-[800px] text-center py-5 mb-10 font-light">
           On our website we provide measures to ensure the safety of children
@@ -129,7 +151,11 @@ const BackgroundSliderSection = () => {
         </p>
         <div className="container flex flex-col items-center justify-center">
           <div className="flex gap-5 lg:flex-row flex-col">
-            <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
+            <div
+              className="flex-1 flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+            >
               <div className="greenball">
                 <IoShieldOutline size={50} color="#6ec599" />
               </div>
@@ -139,7 +165,11 @@ const BackgroundSliderSection = () => {
                 protected.
               </p>
             </div>
-            <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
+            <div
+              className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl"
+              data-aos="fade-down"
+              data-aos-duration="2000"
+            >
               <div className="greenball">
                 <MdGroups size={50} color="#6ec599" />
               </div>
@@ -150,7 +180,11 @@ const BackgroundSliderSection = () => {
                 kindergarten.
               </p>
             </div>
-            <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
+            <div
+              className="flex-1   flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl"
+              data-aos="fade-down"
+              data-aos-duration="3000"
+            >
               <div className="greenball">
                 <GrCertificate size={50} color="#6ec599" />
               </div>
@@ -162,7 +196,11 @@ const BackgroundSliderSection = () => {
             </div>
           </div>
           <div className="flex my-4 gap-5 lg:flex-row flex-col">
-            <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
+            <div
+              className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+            >
               <div className="greenball">
                 <MdOutlineChildCare size={50} color="#6ec599" />
               </div>
@@ -173,7 +211,11 @@ const BackgroundSliderSection = () => {
                 children
               </p>
             </div>
-            <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
+            <div
+              className="flex-1   flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl"
+              data-aos="fade-down"
+              data-aos-duration="2000"
+            >
               <div className="greenball">
                 <TfiPalette size={50} color="#6ec599" />
               </div>
@@ -184,12 +226,16 @@ const BackgroundSliderSection = () => {
                 different kindergartens.
               </p>
             </div>
-            <div className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl">
+            <div
+              className="flex-1  flex flex-col  items-center justify-center h-56 bg-slate-100 p-3 rounded-xl"
+              data-aos="fade-down"
+              data-aos-duration="3000"
+            >
               <div className="greenball">
                 <IoSunnyOutline size={50} color="#6ec599" />
               </div>
               <h3 className="font-semibold text-center mt-3">Attachment</h3>
-              <p className="text-center py-4 font-thin text-slate-600">
+              <p className="text-center  py-4 font-thin text-slate-600">
                 Each parent has all the detail s for contacting the kindergarten
                 n workers as well as the kindergarten workers
               </p>
@@ -198,13 +244,18 @@ const BackgroundSliderSection = () => {
         </div>
       </section>
 
-      <section className="text-gray-600 body-font">
+      <section className="text-gray-600 body-font item ">
         <div className="container flex flex-wrap px-5 py-24 mx-auto items-center">
-          <div className="md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-gray-200">
-            <h1 className="sm:text-3xl text-center lg:text-left font-medium title-font mb-2 text-4xl my-12 text-slate-800">
+          <div
+            className="md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-gray-200"
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="3000"
+          >
+            <h1 className="sm:text-3xl text-center lg:text-left font-medium title-font mb-2 text-4xl my-12 text-slate-800 efect">
               A Few Words About Us
             </h1>
-            <p className="leading-relaxed text-base text-center lg:text-right">
+            <p className="leading-relaxed text-base text-center lg:text-right effect">
               Hello, we are Katy and Anastasia, nice to meet you! After several
               cases of parents who put their child in kindergarten and went to
               work and thought that their treasure was safe and in fact the
@@ -227,13 +278,22 @@ const BackgroundSliderSection = () => {
               exposed to dangers outside.
             </p>
           </div>
-          <div className="flex flex-col md:w-1/2 md:pl-12">
+          <div
+            className="flex flex-col md:w-1/2 md:pl-12 effect"
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="4000"
+          >
             <img src={img4} alt="" className="rounded-lg" />
           </div>
         </div>
       </section>
 
-      <section className="text-white body-font bg-[#9c87c2]">
+      <section
+        className="text-white body-font bg-[#9c87c2]"
+        data-aos="fade-down"
+        data-aos-duration="3000"
+      >
         <div className="container px-5 py-14 mx-auto">
           <div className="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
             <h1 className="flex-grow sm:pr-16 text-2xl font-medium title-font">
