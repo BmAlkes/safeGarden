@@ -26,16 +26,16 @@ const RegisterKid = () => {
   };
   console.log(errors);
   return (
-    <section className="container">
+    <section className="container p-2 md:p-8">
       <div className="flex justify-between mb-12 border-b border-violet-100 p-4">
         <h1 className="font-normal text-4xl text-green-500">Register Kids</h1>
       </div>
-      <div className="efeito-vidro md:max-w-auto">
+      <div className="efeito-vidro md:w-full w-64">
         <h3 className="font-normal text-2xl text-center my-3 text-green-500">
           Register new kid
         </h3>
         <form className="p-5" onSubmit={handleSubmit(handleFormSubmit)}>
-          <div className="py-2">
+          <div className="py-2 md:w-full w-52">
             <label htmlFor="name" className="font-light text-xl">
               Name
             </label>
@@ -47,7 +47,7 @@ const RegisterKid = () => {
               {...register("name")}
             />
           </div>
-          <div className="py-2">
+          <div className="py-2 md:w-full w-52">
             <label htmlFor="lastname" className="font-light text-xl">
               Last Name
             </label>
@@ -59,7 +59,7 @@ const RegisterKid = () => {
               {...register("lastname")}
             />
           </div>
-          <div className="py-2">
+          <div className="py-2 md:w-full w-52">
             <label htmlFor="adress" className="font-light text-xl">
               Adress
             </label>
@@ -71,7 +71,7 @@ const RegisterKid = () => {
               id="adress"
             />
           </div>
-          <div className="py-2">
+          <div className="py-2 md:w-full w-52">
             <label htmlFor="phone" className="font-light text-xl">
               Parents Phone
             </label>
@@ -83,7 +83,7 @@ const RegisterKid = () => {
               {...register("parentPhone")}
             />
           </div>
-          <div className="py-2">
+          <div className="py-2 md:w-full w-52">
             <label htmlFor="HMO" className="font-light text-xl">
               HMO
             </label>
@@ -95,7 +95,7 @@ const RegisterKid = () => {
               {...register("HMO")}
             />
           </div>
-          <div className="py-2">
+          <div className="py-2 md:w-full w-52">
             <label htmlFor="allergic" className="font-light text-xl">
               allergic
             </label>
@@ -107,7 +107,7 @@ const RegisterKid = () => {
               {...register("allergic")}
             />
           </div>
-          <div className="py-2">
+          <div className="py-2 md:w-full w-52">
             <label htmlFor="blood" className="font-light text-xl">
               Blood Type
             </label>

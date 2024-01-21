@@ -119,13 +119,13 @@ const Calendar = () => {
         <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
           <h1 className="font-normal text-4xl text-green-500">My Kids</h1>
         </nav>
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-          <div className="grid grid-cols-10">
-            <div className="col-span-8">
+        <main className="flex min-h-screen flex-wrap flex-col items-center justify-between p-5">
+          <div className="grid md:grid-cols-12 grid-cols-4">
+            <div className="col-span-10">
               <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
                 headerToolbar={{
-                  left: "prev,next today",
+                  left: "prev,next",
                   center: "title",
                   right: "resourceTimelineWook, dayGridMonth,timeGridWeek",
                 }}
