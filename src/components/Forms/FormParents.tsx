@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "@/context/authContext";
 
 const schemaForm = z.object({
+  role: z.string(),
   firstName: z.string({
     required_error: "First name is required",
     invalid_type_error: "First name must be a string",
@@ -14,20 +15,10 @@ const schemaForm = z.object({
     required_error: "Lastname is required",
     invalid_type_error: "Lastname must be a string",
   }),
-  telephone: z.string({
+  phone: z.string({
     required_error: "Telephone is required",
   }),
-  children: z.string({
-    required_error: "Children name is required",
-  }),
-  childrenId: z.string({
-    required_error: "children ID is required",
-  }),
-  healthPlan: z.string(),
-  allergic: z.string({
-    required_error: "Allergic is required",
-  }),
-  adress: z.string({
+  address: z.string({
     required_error: "Adress is required",
   }),
   email: z.string().email(),
@@ -35,6 +26,7 @@ const schemaForm = z.object({
     .string()
     .min(5, "please the password must need to be at more 5 than 5 caracters")
     .max(20, "Please the password must be at least 20 characters"),
+  passwordConfirm: z.string(),
 });
 
 const FormParents = () => {
@@ -42,17 +34,21 @@ const FormParents = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schemaForm),
   });
+  const watchPassword = watch("password");
   const navigate = useNavigate();
   const handleRegisterForm = (data: any) => {
     registerUser(data);
   };
 
+  console.log(errors);
   return (
     <form onSubmit={handleSubmit(handleRegisterForm)}>
+      <input {...register("role")} value="parent" className="hidden" />
       <div className="flex gap-2 ">
         <div className="flex flex-col gap-2 flex-1">
           <label>Name</label>
@@ -90,7 +86,7 @@ const FormParents = () => {
           <input
             className="border-2 rounded-md p-1 w-36 md:w-full"
             placeholder="phone"
-            {...register("telephone")}
+            {...register("phone")}
           />
           {errors?.telephone?.message && (
             <p className="text-red-600 text-xs">
@@ -115,72 +111,42 @@ const FormParents = () => {
       </div>
       <div className="flex gap-2 ">
         <div className="flex flex-col gap-2 flex-1">
-          <label>Children Name</label>
+          <label> Confirm Password</label>
           <input
-            type="text"
             className="border-2 rounded-md p-1 w-36 md:w-full"
-            placeholder="Children Name"
-            {...register("children", { required: true })}
+            placeholder="Enter your  Confirm password"
+            type="password"
+            {...register("passwordConfirm", {
+              required: true,
+              validate: (value) => {
+                return value === watchPassword;
+              },
+            })}
           />
-          {errors?.children?.message && (
+          {errors?.passwordConfirmation?.type === "required" && (
             <p className="text-red-600 text-xs">
-              {errors?.children?.message.toString()}
+              Password Confirmation is required
             </p>
           )}
-        </div>
-        <div className="flex flex-col gap-2  flex-1">
-          <label>Children ID</label>
-          <input
-            className="border-2 rounded-md p-1 w-36 md:w-full"
-            type="text"
-            placeholder="Children ID"
-            {...register("childrenId")}
-          />
-          {errors?.childrenId?.message && (
+          {errors?.passwordConfirmation?.type === "validate" && (
             <p className="text-red-600 text-xs">
-              {errors?.childrenId?.message.toString()}
+              Password Confirmation is not matches the current password
             </p>
           )}
         </div>
       </div>
-      <div className="flex gap-2 ">
-        <div className="flex flex-col gap-2 flex-1">
-          <label>Health Plans</label>
-          <select
-            {...register("healthPlan")}
-            className="border-2 rounded-md p-1"
-          >
-            <option value="Maccabi">Maccabi</option>
-            <option value="clalit">Clalit</option>
-            <option value="meuhedet">Meuhedet</option>
-          </select>
-        </div>
-        <div className="flex flex-col gap-2">
-          <label>Allergic</label>
-          <input
-            className="border-2 rounded-md p-1"
-            type="text"
-            placeholder="allergic"
-            {...register("allergic")}
-          />
-          {errors?.allergic?.message && (
-            <p className="text-red-600 text-xs">
-              {errors?.allergic?.message.toString()}
-            </p>
-          )}
-        </div>
-      </div>
+
       <div className="flex flex-col gap-2">
         <label>Residence Name</label>
         <input
           className="border-2 rounded-md p-1"
           type="text"
           placeholder="Residence Name"
-          {...register("adress", { required: true })}
+          {...register("address", { required: true })}
         />
-        {errors?.adress?.message && (
+        {errors?.address?.message && (
           <p className="text-red-600 text-xs">
-            {errors?.adress?.message.toString()}
+            {errors?.address?.message.toString()}
           </p>
         )}
       </div>
