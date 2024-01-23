@@ -1,7 +1,7 @@
 import { ParentsProps, UserLogin } from "@/@types/user";
 import api from "@/services/authService";
 import { createContext, ReactNode, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface AuthContextData {
@@ -82,6 +82,7 @@ function UserProvider({ children }: { children: ReactNode }) {
   const logout = async () => {
     try {
       const response = await api.get("api/users/logout");
+      return response;
       toast.success("logout Sucess");
       setUser(null);
       setIsAuthenticated(false);

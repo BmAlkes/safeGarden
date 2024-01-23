@@ -5,7 +5,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { UserContext } from "@/context/authContext";
-import { useNavigate } from "react-router-dom";
 
 const schemaForm = z.object({
   email: z.string().email(),
