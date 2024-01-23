@@ -13,29 +13,92 @@ import KidsDetail from "./pages/kindergarten/kidsdetail";
 import RegisterKid from "./pages/registerkid";
 import Menu from "./pages/menu";
 import DailyPhotos from "./pages/dailyPhotos";
+import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/Terms" element={<Therms />} />
-          <Route path="/" element={<DefaultLayout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/mykids" element={<MyKids />} />
-            <Route path="/mykids/:id" element={<MyKidsDetail />} />
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/kindergarten" element={<KinderGarten />} />
-            <Route path="/kidsdetail/:id" element={<KidsDetail />} />
-            <Route path="/registerKid" element={<RegisterKid />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/dailyPhoto" element={<DailyPhotos />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/Terms" element={<Therms />} />
+
+        <Route path="/" element={<DefaultLayout />}>
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/mykids"
+            element={
+              <PrivateRoute>
+                <MyKids />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/mykids/:id"
+            element={
+              <PrivateRoute>
+                <MyKidsDetail />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/calendar"
+            element={
+              <PrivateRoute>
+                <Calendar />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/kindergarten"
+            element={
+              <PrivateRoute>
+                <KinderGarten />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/kidsdetail/:id"
+            element={
+              <PrivateRoute>
+                <KidsDetail />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/registerKid"
+            element={
+              <PrivateRoute>
+                <RegisterKid />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/menu"
+            element={
+              <PrivateRoute>
+                <Menu />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dailyPhoto"
+            element={
+              <PrivateRoute>
+                <DailyPhotos />
+              </PrivateRoute>
+            }
+          />
+        </Route>
+      </Routes>
     </>
   );
 }

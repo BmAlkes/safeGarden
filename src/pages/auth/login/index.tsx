@@ -3,6 +3,9 @@ import logo from "../../../assets/logo (2).jpg";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { UserContext } from "@/context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const schemaForm = z.object({
   email: z.string().email(),
@@ -13,6 +16,8 @@ const schemaForm = z.object({
 });
 
 const Login = () => {
+  const { Login } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
@@ -22,9 +27,8 @@ const Login = () => {
   });
 
   const handleSubmitForm = (data: any) => {
-    console.log(data);
+    Login(data);
   };
-  console.log(errors);
   return (
     <>
       <Header />

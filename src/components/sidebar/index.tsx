@@ -1,15 +1,21 @@
 import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react";
 import logo from "../../assets/logo (2).jpg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { TbMoodKid } from "react-icons/tb";
 import { CiCalendarDate, CiSettings } from "react-icons/ci";
 import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 import { GiPlayerBase } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { IoFastFoodOutline } from "react-icons/io5";
+import { UserContext } from "@/context/authContext";
 
 const Sidebar = () => {
   const [expandend, setExpandend] = useState(true);
+  const { user, logout } = useContext(UserContext);
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <aside className="h-screen">
       <nav className="w-full h-full flex flex-col bg-white border-r shadow-lg">
@@ -158,24 +164,30 @@ const Sidebar = () => {
           </li>
         </ul>
         <div className="border-t flex p-3">
-          <img
-            src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
-            className="w-10 h-10 rounded-md"
-            alt=""
-          />
+          {user?.data.user.photo && (
+            <img
+              src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
+              className="w-10 h-10 rounded-md"
+              alt=""
+            />
+          )}
           <div
             className={`flex justify-between items-center  overflow-hidden transition-all ${
               expandend ? "w-32 ml-3" : "w-0"
             } `}
           >
             <div className="leading-4">
-              <h4 className="font-semibold">User</h4>
-              <span className="text-xs text-gray-600">user@gmail.com</span>
+              <h4 className="font-semibold">{user?.data.user.firstName}</h4>
+              <span className="text-xs text-gray-600">
+                {user?.data.user.email}
+              </span>
             </div>
             <MoreVertical size={20} className="cursor-pointer" />
           </div>
         </div>
-        <button className=" bg-green-500 text-white h-8">Logout</button>
+        <button className=" bg-green-500 text-white h-8" onClick={handleLogout}>
+          Logout
+        </button>
       </nav>
     </aside>
   );

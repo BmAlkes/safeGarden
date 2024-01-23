@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { UserContext } from "@/context/authContext";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 const MyKids = () => {
-  const [kids] = useState(true);
+  const [kids] = useState([]);
+  const [reportAttendance, setReportAttendance] = useState<String[]>([]);
+
+  const handleReportAttendance = () => {
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+
+    const dayAttendance = `${day}/${month} ${hour}:${minute} attendance`;
+    setReportAttendance((prev) => [...prev, dayAttendance]);
+  };
   return (
     <div className="container">
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
@@ -16,7 +29,7 @@ const MyKids = () => {
           </button>
         </Link>
       </div>
-      {kids ? (
+      {kids.length === 0 ? (
         <>
           <div>
             <Link to={`/mykids/id`}>
@@ -44,9 +57,17 @@ const MyKids = () => {
               </div>
             </Link>
             <div className="flex flex-col md:flex-row items-center justify-between mt-11 gap-5">
-              <button className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600">
-                Report Attendance
-              </button>
+              <div>
+                <button
+                  onClick={handleReportAttendance}
+                  className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600"
+                >
+                  Report Attendance
+                </button>
+                {reportAttendance.length > 0 && (
+                  <p>{reportAttendance[reportAttendance.length - 1]}</p>
+                )}
+              </div>
               <button className="bg-red-500 text-white font-thin h-10  p-6 flex items-center rounded-lg hover:bg-red-600">
                 Not comming Today
               </button>
