@@ -172,7 +172,7 @@ const Sidebar = () => {
                 expandend ? "w-32" : "w-0"
               }`}
             >
-              Kindergarten settings
+              School Settings
             </span>
           </li>
         </ul>
