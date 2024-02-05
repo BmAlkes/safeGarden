@@ -4,6 +4,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChangeEvent, useState } from "react";
 import { FiTrash, FiUpload } from "react-icons/fi";
+import axios from "axios";
+import api from "@/services/authService";
 
 interface ImageItemProps {
   uid: number;
@@ -30,7 +32,8 @@ const RegisterKid = () => {
   });
 
   const handleFormSubmit = (data: any) => {
-    console.log(data);
+    const response = api.post("/api/child/addChild", data);
+    console.log(response);
   };
   const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {

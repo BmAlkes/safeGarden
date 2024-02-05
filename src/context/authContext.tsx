@@ -81,8 +81,7 @@ function UserProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     try {
-      const response = await api.get("api/users/logout");
-      return response;
+      await api.get("api/users/logout");
       toast.success("logout Sucess");
       setUser(null);
       setIsAuthenticated(false);

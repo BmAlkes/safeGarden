@@ -1,19 +1,34 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const MyKids = () => {
   const [kids] = useState([]);
   const [reportAttendance, setReportAttendance] = useState<String[]>([]);
+  const [sick, setSick] = useState(false);
+  const [vacation, setVacation] = useState(false);
+  const [notShowUp, setNotShowUp] = useState("");
 
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const dayAttendance = `${day}/${month} ${hour}:${minute} attendance`;
   const handleReportAttendance = () => {
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-
-    const dayAttendance = `${day}/${month} ${hour}:${minute} attendance`;
     setReportAttendance((prev) => [...prev, dayAttendance]);
+  };
+
+  const handleNotComing = () => {
+    if (sick === false && vacation === false) {
+      toast.warning("plese informe if is sick or vacation");
+    }
+    if (sick === true && vacation === false) {
+      setNotShowUp(` Not coming today today sick ${dayAttendance}`);
+    }
+    if (sick === false && vacation === true) {
+      setNotShowUp(` Not coming today today vacation ${dayAttendance}`);
+    }
   };
   return (
     <div className="container">
@@ -64,10 +79,15 @@ const MyKids = () => {
                   Report Attendance
                 </button>
                 {reportAttendance.length > 0 && (
-                  <p>{reportAttendance[reportAttendance.length - 1]}</p>
+                  <p className="text-right border p-2 border-slate-300 my-2 inline-block">
+                    {reportAttendance[reportAttendance.length - 1]}
+                  </p>
                 )}
               </div>
-              <button className="bg-red-500 text-white font-thin h-10  p-6 flex items-center rounded-lg hover:bg-red-600">
+              <button
+                onClick={handleNotComing}
+                className="bg-red-500 text-white font-thin h-10  p-6 flex items-center rounded-lg hover:bg-red-600"
+              >
                 Not comming Today
               </button>
             </div>
@@ -79,6 +99,9 @@ const MyKids = () => {
                   id="sick"
                   name="sick"
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  onChange={() => {
+                    setSick(!sick);
+                  }}
                 />
               </div>
               <div className="flex items-center gap-3">
@@ -88,9 +111,19 @@ const MyKids = () => {
                   id="vacation"
                   name="vacation"
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  onChange={() => {
+                    setVacation(!vacation);
+                  }}
                 />
               </div>
             </div>
+            {notShowUp.length > 0 && (
+              <div className="flex justify-end">
+                <p className="text-right border p-2 border-slate-300 my-2 inline-block">
+                  {notShowUp}
+                </p>
+              </div>
+            )}
           </div>
         </>
       ) : (

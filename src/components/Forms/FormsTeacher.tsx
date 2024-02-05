@@ -1,9 +1,12 @@
+import { UserContext } from "@/context/authContext";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const schemaForm = z.object({
+  role: z.string(),
   firstName: z.string({
     required_error: "First name is required",
     invalid_type_error: "First name must be a string",
@@ -12,11 +15,10 @@ const schemaForm = z.object({
     required_error: "Lastname is required",
     invalid_type_error: "Lastname must be a string",
   }),
-
-  nameOfKind: z.string(),
-  city: z.string(),
-  Hours: z.string(),
-  Adress: z.string({
+  phone: z.string({
+    required_error: "Telephone is required",
+  }),
+  address: z.string({
     required_error: "Adress is required",
   }),
   email: z.string().email(),
@@ -24,33 +26,43 @@ const schemaForm = z.object({
     .string()
     .min(5, "please the password must need to be at more 5 than 5 caracters")
     .max(20, "Please the password must be at least 20 characters"),
+  passwordConfirm: z.string(),
 });
 
 const FormsTeacher = () => {
+  const { registerUser } = useContext(UserContext);
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schemaForm),
   });
+  const watchPassword = watch("password");
   const navigate = useNavigate();
-
-  const handleKindeGardenForm = (data: any) => {
-    console.log(data);
+  const handleRegisterForm = (data: any) => {
+    registerUser(data);
   };
-  console.log(errors);
+
   return (
-    <form onSubmit={handleSubmit(handleKindeGardenForm)}>
+    <form onSubmit={handleSubmit(handleRegisterForm)}>
+      <input {...register("role")} value="director" className="hidden" />
       <div className="flex gap-2 ">
         <div className="flex flex-col gap-2 flex-1">
           <label>Name</label>
           <input
-            type="text"
             className="border-2 rounded-md p-1 w-36 md:w-full"
+            type="text"
             placeholder="Name"
             {...register("firstName", { required: true })}
           />
+
+          {errors?.firstName?.message && (
+            <p className="text-red-600 text-xs">
+              {errors?.firstName?.message.toString()}
+            </p>
+          )}
         </div>
         <div className="flex flex-col gap-2 flex-1">
           <label>Last Name</label>
@@ -60,74 +72,99 @@ const FormsTeacher = () => {
             placeholder="LastName"
             {...register("lastName", { required: true })}
           />
+          {errors?.lastName?.message && (
+            <p className="text-red-600 text-xs">
+              {errors?.lastName?.message.toString()}
+            </p>
+          )}
         </div>
       </div>
-      <div className="flex gap-2 ">
+      <div className="flex gap-2  ">
+        <div className="flex flex-col gap-2 flex-1">
+          <label>Telephone</label>
+          <input
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            placeholder="phone"
+            {...register("phone")}
+          />
+          {errors?.telephone?.message && (
+            <p className="text-red-600 text-xs">
+              {errors?.telephone?.message.toString()}
+            </p>
+          )}
+        </div>
         <div className="flex flex-col gap-2 flex-1">
           <label>Password</label>
           <input
             className="border-2 rounded-md p-1 w-36 md:w-full"
             type="password"
             placeholder="Password"
-            {...register("password", {
+            {...register("password")}
+          />
+          {errors?.password?.message && (
+            <p className="text-red-600 text-xs">
+              {errors?.password?.message.toString()}
+            </p>
+          )}
+        </div>
+      </div>
+      <div className="flex gap-2 ">
+        <div className="flex flex-col gap-2 flex-1">
+          <label> Confirm Password</label>
+          <input
+            className="border-2 rounded-md p-1 w-36 md:w-full"
+            placeholder="Enter your  Confirm password"
+            type="password"
+            {...register("passwordConfirm", {
               required: true,
-              maxLength: 15,
-              minLength: 5,
+              validate: (value) => {
+                return value === watchPassword;
+              },
             })}
           />
-        </div>
-        <div className="flex flex-col gap-2 flex-1">
-          <label>Email</label>
-          <input
-            type="email"
-            className="border-2 rounded-md p-1 w-36 md:w-full"
-            placeholder="email"
-            {...register("email", { required: true })}
-          />
-        </div>
-      </div>
-      <div className="flex gap-2 ">
-        <div className="flex flex-col gap-2 flex-1">
-          <label>The name of the residence</label>
-          <input
-            type="text"
-            className="border-2 rounded-md p-1 w-36 md:w-full"
-            placeholder="Residence"
-            {...register("nameOfKind", { required: true })}
-          />
-        </div>
-        <div className="flex flex-col gap-2 flex-1">
-          <label>Adress Residence</label>
-          <input
-            type="text"
-            className="border-2 rounded-md p-1 w-36 md:w-full"
-            placeholder="adress"
-            {...register("Adress", { required: true })}
-          />
-        </div>
-      </div>
-      <div className="flex gap-2 ">
-        <div className="flex flex-col gap-2 flex-1">
-          <label>Open Hours</label>
-          <input
-            className="border-2 rounded-md p-1 w-36 md:w-full"
-            type="time"
-            placeholder="Open Hours"
-            {...register("Hours", { required: true })}
-          />
-        </div>
-        <div className="flex flex-col gap-2 flex-1">
-          <label>City of the residence</label>
-          <input
-            className="border-2 rounded-md p-1 w-36 md:w-full"
-            type="Text"
-            placeholder="City of the residence"
-            {...register("city", { required: true })}
-          />
+          {errors?.passwordConfirmation?.type === "required" && (
+            <p className="text-red-600 text-xs">
+              Password Confirmation is required
+            </p>
+          )}
+          {errors?.passwordConfirmation?.type === "validate" && (
+            <p className="text-red-600 text-xs">
+              Password Confirmation is not matches the current password
+            </p>
+          )}
         </div>
       </div>
 
-      <p className=" py-5">
+      <div className="flex flex-col gap-2">
+        <label>Residence Name</label>
+        <input
+          className="border-2 rounded-md p-1"
+          type="text"
+          placeholder="Residence Name"
+          {...register("address", { required: true })}
+        />
+        {errors?.address?.message && (
+          <p className="text-red-600 text-xs">
+            {errors?.address?.message.toString()}
+          </p>
+        )}
+      </div>
+      <div className="flex flex-col gap-2">
+        <label>Email</label>
+        <input
+          className="border-2 rounded-md p-1"
+          type="text"
+          placeholder="Email@email"
+          {...register("email", { required: true })}
+        />
+        {errors?.email?.message && (
+          <p className="text-red-600 text-xs">
+            {errors?.email?.message.toString()}
+          </p>
+        )}
+      </div>
+
+      <p className="py-3">
         By clicking Sign Up, you agree to our
         <br />
         <span
