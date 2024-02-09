@@ -151,18 +151,20 @@ const Sidebar = () => {
               </span>
             </li>
           </Link>
-          <li
-            className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
-          >
-            <CiSettings size={25} />
-            <span
-              className={`overflow-hidden transition-all ml-3 ${
-                expandend ? "w-32" : "w-0"
-              }`}
+          <Link to="/registerKindgarden">
+            <li
+              className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
             >
-              Register Kindergarten
-            </span>
-          </li>
+              <CiSettings size={25} />
+              <span
+                className={`overflow-hidden transition-all ml-3 ${
+                  expandend ? "w-32" : "w-0"
+                }`}
+              >
+                Register Kindergarten
+              </span>
+            </li>
+          </Link>
           <li
             className={`relative flex items-center rounded-md cursor-pointer py-2 px-3 my-1 font-medium transition-colors  hover:bg-green-500  hover:text-white`}
           >

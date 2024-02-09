@@ -14,6 +14,7 @@ import RegisterKid from "./pages/registerkid";
 import Menu from "./pages/menu";
 import DailyPhotos from "./pages/dailyPhotos";
 import PrivateRoute from "./utils/PrivateRoute";
+import RegisterKindegarden from "./pages/registerKindergaden";
 
 function App() {
   return (
@@ -94,6 +95,14 @@ function App() {
             element={
               <PrivateRoute>
                 <DailyPhotos />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/registerKindgarden"
+            element={
+              <PrivateRoute>
+                <RegisterKindegarden />
               </PrivateRoute>
             }
           />

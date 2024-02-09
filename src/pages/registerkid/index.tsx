@@ -4,7 +4,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChangeEvent, useState } from "react";
 import { FiTrash, FiUpload } from "react-icons/fi";
-import axios from "axios";
 import api from "@/services/authService";
 
 interface ImageItemProps {
