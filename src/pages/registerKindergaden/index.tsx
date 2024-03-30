@@ -13,16 +13,18 @@ interface ImageItemProps {
 }
 const schemaForm = z.object({
   kindergardenName: z.string(),
-  kindergardebAddress: z.string(),
+  kindergardenAddress: z.string(),
   kindergardenAuthority: z.string(),
   kindergardenWorkHours: z.string(),
 });
 const RegisterKindegarden = () => {
   const { user } = useContext(UserContext);
-  const [ganPic, setGanPic] = useState<ImageItemProps[]>([]);
+  const [, setGanPic] = useState<ImageItemProps[]>([]);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schemaForm),
@@ -34,7 +36,6 @@ const RegisterKindegarden = () => {
       if (image.type === "image/jpeg" || image.type === "image/png") {
         handleUpload(image);
       } else {
-        alert("Send a image file png or Jpeg");
         return;
       }
     }
@@ -51,11 +52,17 @@ const RegisterKindegarden = () => {
   }
 
   const handleRegisterGan = (data: any) => {
-    const response = api.post("/api/kindergarden/register", {
-      ...data,
-      ganPic,
-    });
-    console.log(response);
+    console.log(data);
+    try {
+      const response = api.post("/api/kindergarden/register", {
+        ...data,
+        director: [user?.data.user._id],
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    reset();
   };
   console.log(errors);
   return (
@@ -96,7 +103,7 @@ const RegisterKindegarden = () => {
                   placeholder="Kindergarden Address"
                   id="address"
                   className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
-                  {...register("kindergardebAddress")}
+                  {...register("kindergardenAddress")}
                 />
               </div>
               <div className="py-2 md:w-full w-52 mb-3">
@@ -113,11 +120,12 @@ const RegisterKindegarden = () => {
               </div>
               <div className="py-2 md:w-full w-52">
                 <label htmlFor="hours" className="font-light text-xl">
-                  Kindergarden Hours
+                  Kindergarden Start
                 </label>
                 <input
-                  type="time"
+                  type="text"
                   id="hours"
+                  placeholder=" 09-17"
                   className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
                   {...register("kindergardenWorkHours")}
                 />

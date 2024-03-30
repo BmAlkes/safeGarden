@@ -2,37 +2,60 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { FiTrash, FiUpload } from "react-icons/fi";
 import api from "@/services/authService";
+import { UserContext } from "@/context/authContext";
 
 interface ImageItemProps {
   uid: number;
   name: string;
   previewUrl: string;
 }
+interface kiderganderType {
+  _id: string;
+  kindergardenName: string;
+  kindergardenAddress: string;
+  kindergardenAuthority: string;
+
+  kindergardenWorkHours: string;
+}
 const schemaForm = z.object({
-  name: z.string(),
-  lastname: z.string(),
-  adress: z.string(),
-  parentPhone: z.string(),
+  firstName: z.string(),
+  lastName: z.string(),
+  kidId: z.string(),
+  // adress: z.string(),
+  // parentPhone: z.string(),
   HMO: z.string(),
-  allergic: z.string(),
-  bloodtype: z.string(),
+  // allergic: z.string(),
+  // bloodtype: z.string(),
+  kindergarten: z.string(),
 });
 const RegisterKid = () => {
   const [kidsImage, setKidsImages] = useState<ImageItemProps[]>([]);
+  const [gan, setGan] = useState<kiderganderType[]>([]);
+  const { user } = useContext(UserContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: zodResolver(schemaForm),
   });
 
   const handleFormSubmit = (data: any) => {
-    const response = api.post("/api/child/addChild", data);
-    console.log(response);
+    try {
+      console.log({ ...data, parent: user?.data.user._id });
+      const response = api.post("/api/child/addChild", {
+        ...data,
+        parent: user?.data.user._id,
+      });
+      console.log(response);
+      reset();
+    } catch (e) {
+      console.log(e);
+    }
   };
   const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -47,6 +70,20 @@ const RegisterKid = () => {
     }
   };
 
+  async function axiosTest() {
+    try {
+      // use data destructuring to get data from the promise object
+      const { data } = await api.get("/api/kindergarden");
+      setGan(data.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    axiosTest();
+  }, []);
+
   async function handleUpload(image: File) {
     console.log(image);
     const imageItem = {
@@ -58,6 +95,7 @@ const RegisterKid = () => {
   }
 
   console.log(errors);
+
   return (
     <section className="container p-2 md:p-8">
       <div className="flex justify-between mb-12 border-b border-violet-100 p-4">
@@ -70,29 +108,29 @@ const RegisterKid = () => {
         <form className="p-5" onSubmit={handleSubmit(handleFormSubmit)}>
           <div className="py-2 md:w-full w-52">
             <label htmlFor="name" className="font-light text-xl">
-              Name
+              Kid First Name
             </label>
             <input
               type="text"
               placeholder="type kid name"
               id="name"
               className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
-              {...register("name")}
+              {...register("firstName")}
             />
           </div>
           <div className="py-2 md:w-full w-52">
             <label htmlFor="lastname" className="font-light text-xl">
-              Last Name
+              Kid LastName
             </label>
             <input
               type="text"
               id="lastname"
               placeholder="type kid lastname"
               className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
-              {...register("lastname")}
+              {...register("lastName")}
             />
           </div>
-          <div className="py-2 md:w-full w-52">
+          {/* <div className="py-2 md:w-full w-52">
             <label htmlFor="adress" className="font-light text-xl">
               Adress
             </label>
@@ -103,8 +141,8 @@ const RegisterKid = () => {
               {...register("adress")}
               id="adress"
             />
-          </div>
-          <div className="py-2 md:w-full w-52">
+          </div> */}
+          {/* <div className="py-2 md:w-full w-52">
             <label htmlFor="phone" className="font-light text-xl">
               Parents Phone
             </label>
@@ -114,6 +152,18 @@ const RegisterKid = () => {
               placeholder="type parents phone"
               className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
               {...register("parentPhone")}
+            />
+          </div> */}
+          <div className="py-2 md:w-full w-52">
+            <label htmlFor="id kid" className="font-light text-xl">
+              Kid ID:
+            </label>
+            <input
+              type="text"
+              id="id kid"
+              placeholder="Kid ID "
+              className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
+              {...register("kidId")}
             />
           </div>
           <div className="py-2 md:w-full w-52">
@@ -128,7 +178,7 @@ const RegisterKid = () => {
               {...register("HMO")}
             />
           </div>
-          <div className="py-2 md:w-full w-52">
+          {/* <div className="py-2 md:w-full w-52">
             <label htmlFor="allergic" className="font-light text-xl">
               allergic
             </label>
@@ -139,8 +189,8 @@ const RegisterKid = () => {
               className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
               {...register("allergic")}
             />
-          </div>
-          <div className="py-2 md:w-full w-52">
+          </div> */}
+          {/* <div className="py-2 md:w-full w-52">
             <label htmlFor="blood" className="font-light text-xl">
               Blood Type
             </label>
@@ -151,6 +201,21 @@ const RegisterKid = () => {
               className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
               {...register("bloodtype")}
             />
+          </div> */}
+          <div className="py-2 md:w-full w-52">
+            <label htmlFor="" className="font-light text-xl">
+              Choose a kindegarden
+            </label>
+            <select
+              name="Kindegarden"
+              className="w-full h-12 rounded-md p-2 bg-transparent border-2 border-green-200"
+            >
+              {gan.map((item) => (
+                <option value={item._id} {...register("kindergarten")}>
+                  {item.kindergardenName}{" "}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="py-2 flex flex-col">
             <label htmlFor="picture" className="font-light text-xl">

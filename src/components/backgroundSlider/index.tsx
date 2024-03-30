@@ -58,12 +58,12 @@ const BackgroundSliderSection = () => {
           backgroundImage: `url(${returnPhotoURL()})`,
         }}
       >
-        <div className="flex-col lg:max-w-3xl sm:max-w-lg flex items-center ml-6 justify-center p-7 h-full sm:p-5 z-50">
+        <div className="flex-col md:max-w-xl w-full flex items-center ml-6 justify-center p-7 h-full sm:p-5 z-50">
           <h1 className=" text-2xl text-white lg:text-5xl">
             You can be calm with safegarden. Best web app for daycare
             management.
           </h1>
-          <p className="text-white mt-5 text-sm lg:text-lg py-4">
+          <p className="text-white mt-5 text-sm lg:text-lg py-3">
             Welcome to safe garden Our site was built for kindergartens in order
             to give a sense of peace and security for your children.
             <br />
@@ -75,7 +75,7 @@ const BackgroundSliderSection = () => {
           </p>
           <Link
             to="/login"
-            className=" bg-green-500 text-white p-2 rounded-md absolute bottom-16 left-12 cursor-pointer "
+            className=" bg-green-500 text-white p-2 rounded-md absolute md:bottom-16 bottom-6 left-12 cursor-pointer "
           >
             Let The Fun Begin
           </Link>
@@ -316,7 +316,7 @@ const BackgroundSliderSection = () => {
         <div className="border-t border-gray-200">
           <div className="container px-5 py-8 flex flex-wrap mx-auto items-center">
             <div className="flex md:flex-nowrap flex-wrap justify-center items-center md:justify-start">
-              <div className="relative sm:w-64 w-40 sm:mr-4 mr-2">
+              <div className="relative  w-64  mr-4">
                 <form>
                   <label
                     htmlFor="footer-field"

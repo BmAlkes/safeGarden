@@ -31,7 +31,7 @@ const Header = () => {
               <nav
                 // :className="!navbarOpen && 'hidden' "
                 id="navbarCollapse"
-                className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white p-2 py-5  lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent sm:border-slate-300  ${
+                className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white p-2 py-5  lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent sm:border-slate-300 z-50 ${
                   !open && "hidden"
                 } `}
               >
