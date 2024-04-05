@@ -1,13 +1,51 @@
-import { useState } from "react";
+import { UserContext } from "@/context/authContext";
+import api from "@/services/authService";
+import { useContext, useState } from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
+interface KidsProps {
+  HMO: string;
+  firstName: string;
+  kidId: number;
+  lastName: string;
+  phone: string;
+  parent?: {
+    id: string;
+    address: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    phone: string;
+    photo: string;
+    role: string;
+    _id: string;
+  };
+  kindergarten: {
+    kindergardenAddress: string;
+    kindergardenAuthority: string;
+    kindergardenName: string;
+    kindergardenWorkHours: string;
+    photo: string;
+    _id: string;
+  };
+}
+
 const MyKids = () => {
-  const [kids] = useState([]);
   const [reportAttendance, setReportAttendance] = useState<String[]>([]);
   const [sick, setSick] = useState(false);
   const [vacation, setVacation] = useState(false);
   const [notShowUp, setNotShowUp] = useState("");
+  const { user } = useContext(UserContext);
+
+  const { data, isLoading } = useQuery("parents", () => {
+    return api.get("/api/child").then((response) => response.data);
+  });
+  const myKids = data?.data.data.filter(
+    (child: KidsProps) => child.parent?._id === user?.data.user._id
+  );
+  console.log(myKids);
 
   const date = new Date();
   const day = date.getDate();
@@ -15,11 +53,21 @@ const MyKids = () => {
   const hour = date.getHours();
   const minute = date.getMinutes();
   const dayAttendance = `${day}/${month} ${hour}:${minute} attendance`;
-  const handleReportAttendance = () => {
+  const handleReportAttendance = (kid: KidsProps) => {
     setReportAttendance((prev) => [...prev, dayAttendance]);
+    try {
+      api.post(`/api/${kid.kindergarten._id}/${kid.kidId}/attendance`, {
+        role: kid.parent?.role,
+        kindergartenId: kid.kindergarten._id,
+        kidId: kid.kidId,
+        status: "arrived",
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const handleNotComing = () => {
+  const handleNotComing = (kid: KidsProps) => {
     if (sick === false && vacation === false) {
       toast.warning("plese informe if is sick or vacation");
     }
@@ -30,6 +78,11 @@ const MyKids = () => {
       setNotShowUp(` Not coming today today vacation ${dayAttendance}`);
     }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="container">
       <nav className="flex justify-between mb-12 border-b border-violet-100 p-4">
@@ -43,88 +96,90 @@ const MyKids = () => {
           </button>
         </Link>
       </div>
-      {kids.length === 0 ? (
+      {myKids.length !== 0 ? (
         <>
-          <div>
-            <Link to={`/mykids/id`}>
-              <div className="rounded-lg flex md:flex-row-reverse flex-col bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-                <div className="p-6">
-                  <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                    Amily
-                  </h5>
-                  <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Exercitationem fugiat est, neque assumenda molestiae
-                    repudiandae dolor a rerum voluptatibus nesciunt perspiciatis
-                    omnis eligendi, consequuntur soluta minima iusto magni quae
-                    esse!
-                  </p>
-                  <p className="text-base text-neutral-600 dark:text-neutral-200"></p>
+          {myKids.map((kid: any) => (
+            <div key={kid._id}>
+              <Link to={`/mykids/id`}>
+                <div className="rounded-lg flex md:flex-row-reverse flex-col bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                  <div className="p-6">
+                    <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                      {kid.firstName}
+                    </h5>
+                    <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Exercitationem fugiat est, neque assumenda molestiae
+                      repudiandae dolor a rerum voluptatibus nesciunt
+                      perspiciatis omnis eligendi, consequuntur soluta minima
+                      iusto magni quae esse!
+                    </p>
+                    <p className="text-base text-neutral-600 dark:text-neutral-200"></p>
+                  </div>
+                  <div className="relative overflow-hidden bg-cover bg-no-repeat">
+                    <img
+                      className="rounded-3xl "
+                      src="https://www.campaignforkids.com/wp-content/uploads/2015/03/freekid-1024x768.jpg"
+                      alt=""
+                    />
+                  </div>
                 </div>
-                <div className="relative overflow-hidden bg-cover bg-no-repeat">
-                  <img
-                    className="rounded-3xl "
-                    src="https://www.campaignforkids.com/wp-content/uploads/2015/03/freekid-1024x768.jpg"
-                    alt=""
+              </Link>
+              <div className="flex flex-col md:flex-row items-center justify-between mt-11 gap-5">
+                <div>
+                  <button
+                    onClick={() => handleReportAttendance(kid)}
+                    className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600"
+                  >
+                    Report Attendance
+                  </button>
+                  {reportAttendance.length > 0 && (
+                    <p className="text-right border p-2 border-slate-300 my-2 inline-block">
+                      {reportAttendance[reportAttendance.length - 1]}
+                    </p>
+                  )}
+                </div>
+                <button
+                  onClick={() => handleNotComing(kid)}
+                  className="bg-red-500 text-white font-thin h-10  p-6 flex items-center rounded-lg hover:bg-red-600"
+                >
+                  Not comming Today
+                </button>
+              </div>
+              <div className="flex justify-end gap-6 mt-6">
+                <div className="flex items-center gap-3">
+                  <label htmlFor="sick">Sick</label>
+                  <input
+                    type="checkbox"
+                    id="sick"
+                    name="sick"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    onChange={() => {
+                      setSick(!sick);
+                    }}
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <label htmlFor="vacation">Vacation</label>
+                  <input
+                    type="checkbox"
+                    id="vacation"
+                    name="vacation"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    onChange={() => {
+                      setVacation(!vacation);
+                    }}
                   />
                 </div>
               </div>
-            </Link>
-            <div className="flex flex-col md:flex-row items-center justify-between mt-11 gap-5">
-              <div>
-                <button
-                  onClick={handleReportAttendance}
-                  className="bg-green-500 text-white font-thin h-10 p-6 flex items-center rounded-lg hover:bg-green-600"
-                >
-                  Report Attendance
-                </button>
-                {reportAttendance.length > 0 && (
+              {notShowUp.length > 0 && (
+                <div className="flex justify-end">
                   <p className="text-right border p-2 border-slate-300 my-2 inline-block">
-                    {reportAttendance[reportAttendance.length - 1]}
+                    {notShowUp}
                   </p>
-                )}
-              </div>
-              <button
-                onClick={handleNotComing}
-                className="bg-red-500 text-white font-thin h-10  p-6 flex items-center rounded-lg hover:bg-red-600"
-              >
-                Not comming Today
-              </button>
+                </div>
+              )}
             </div>
-            <div className="flex justify-end gap-6 mt-6">
-              <div className="flex items-center gap-3">
-                <label htmlFor="sick">Sick</label>
-                <input
-                  type="checkbox"
-                  id="sick"
-                  name="sick"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  onChange={() => {
-                    setSick(!sick);
-                  }}
-                />
-              </div>
-              <div className="flex items-center gap-3">
-                <label htmlFor="vacation">Vacation</label>
-                <input
-                  type="checkbox"
-                  id="vacation"
-                  name="vacation"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  onChange={() => {
-                    setVacation(!vacation);
-                  }}
-                />
-              </div>
-            </div>
-            {notShowUp.length > 0 && (
-              <div className="flex justify-end">
-                <p className="text-right border p-2 border-slate-300 my-2 inline-block">
-                  {notShowUp}
-                </p>
-              </div>
-            )}
-          </div>
+          ))}
         </>
       ) : (
         <>
