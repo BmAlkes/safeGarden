@@ -77,6 +77,7 @@ const MyKids = () => {
     if (sick === false && vacation === true) {
       setNotShowUp(` Not coming today today vacation ${dayAttendance}`);
     }
+    return kid;
   };
 
   if (isLoading) {
