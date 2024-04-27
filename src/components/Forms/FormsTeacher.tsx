@@ -32,10 +32,8 @@ const FormsTeacher = () => {
   const watchPassword = watch("password");
   const navigate = useNavigate();
   const handleRegisterForm = (data: any) => {
-    // registerUser(data);
-    console.log(data);
+    registerUser(data);
   };
-  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit(handleRegisterForm)}>
