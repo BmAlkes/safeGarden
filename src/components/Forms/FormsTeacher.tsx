@@ -7,21 +7,11 @@ import { z } from "zod";
 
 const schemaForm = z.object({
   role: z.string(),
-  firstName: z.string({
-    required_error: "First name is required",
-    invalid_type_error: "First name must be a string",
-  }),
-  lastName: z.string({
-    required_error: "Lastname is required",
-    invalid_type_error: "Lastname must be a string",
-  }),
-  phone: z.string({
-    required_error: "Telephone is required",
-  }),
-  address: z.string({
-    required_error: "Adress is required",
-  }),
-  email: z.string().email(),
+  firstName: z.string().nonempty("Please Name is required"),
+  lastName: z.string().nonempty("Please LastName is required"),
+  phone: z.string().nonempty("Please add a phone number"),
+  address: z.string().nonempty("Please Address to your account"),
+  email: z.string().email("Format email not valid"),
   password: z
     .string()
     .min(5, "please the password must need to be at more 5 than 5 caracters")
@@ -42,8 +32,10 @@ const FormsTeacher = () => {
   const watchPassword = watch("password");
   const navigate = useNavigate();
   const handleRegisterForm = (data: any) => {
-    registerUser(data);
+    // registerUser(data);
+    console.log(data);
   };
+  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit(handleRegisterForm)}>
@@ -87,9 +79,9 @@ const FormsTeacher = () => {
             placeholder="phone"
             {...register("phone")}
           />
-          {errors?.telephone?.message && (
+          {errors?.phone?.message && (
             <p className="text-red-600 text-xs">
-              {errors?.telephone?.message.toString()}
+              {errors?.phone?.message.toString()}
             </p>
           )}
         </div>
