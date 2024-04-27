@@ -7,21 +7,11 @@ import { UserContext } from "@/context/authContext";
 
 const schemaForm = z.object({
   role: z.string(),
-  firstName: z.string({
-    required_error: "First name is required",
-    invalid_type_error: "First name must be a string",
-  }),
-  lastName: z.string({
-    required_error: "Lastname is required",
-    invalid_type_error: "Lastname must be a string",
-  }),
-  phone: z.string({
-    required_error: "Telephone is required",
-  }),
-  address: z.string({
-    required_error: "Adress is required",
-  }),
-  email: z.string().email(),
+  firstName: z.string().nonempty("Please name is required"),
+  lastName: z.string().nonempty("Please Lastname is required"),
+  phone: z.string().nonempty("Please phone is required"),
+  address: z.string().nonempty("Please add a address to your account"),
+  email: z.string().email("Format email not valid"),
   password: z
     .string()
     .min(5, "please the password must need to be at more 5 than 5 caracters")
@@ -59,9 +49,9 @@ const FormParents = () => {
             {...register("firstName", { required: true })}
           />
 
-          {errors?.firstName?.message && (
+          {errors.firstName?.message && (
             <p className="text-red-600 text-xs">
-              {errors?.firstName?.message.toString()}
+              {errors.firstName?.message?.toString()}
             </p>
           )}
         </div>
@@ -86,11 +76,11 @@ const FormParents = () => {
           <input
             className="border-2 rounded-md p-1 w-36 md:w-full"
             placeholder="phone"
-            {...register("phone")}
+            {...register("phone", { required: true })}
           />
-          {errors?.telephone?.message && (
+          {errors?.phone && (
             <p className="text-red-600 text-xs">
-              {errors?.telephone?.message.toString()}
+              {errors?.phone.message!.toString()}
             </p>
           )}
         </div>
@@ -158,9 +148,9 @@ const FormParents = () => {
           placeholder="Email@email"
           {...register("email", { required: true })}
         />
-        {errors?.email?.message && (
+        {errors?.email && (
           <p className="text-red-600 text-xs">
-            {errors?.email?.message.toString()}
+            {errors?.email?.message!.toString()}
           </p>
         )}
       </div>
